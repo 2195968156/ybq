@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		h1 {
+			font-weight: bold;
+			margin: 0 ;
+			
+		}
+
+		p {
+			font-size: 14px;
+			line-height: 20px;
+			letter-spacing: .5px;
+			margin: 20px 0 30px;
+		}
+
+		span {
+			font-size: 12px;
+		}
+
+		a {
+			color: #333;
+			font-size: 14px;
+			text-decoration: none;
+			margin: 15px 0;
+		}
+
+		body {
+			background-color: bisque;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			background: url('./img/2.jpg') no-repeat center center ;
+		}
+
+		.box {
+			background-color: rgba(0,0,0,.4);
+			width: 768px;
+			max-width: 100%;
+			max-height: 500px;
+			box-shadow: 0 14px 28px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .22);
+			border-radius: 10px;
+			position: relative;
+			display: flex;
+			flex-wrap: wrap;
+			background: url('./img/2.jpg') no-repeat center center ;
+		}
+		
+		.form-container form{
+			height: 400px;
+			width: 384px;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			text-align: center;
+			padding: 0 50px;
+			
+		}
+		.form-container form h1{
+			margin-bottom: 20px;
+		}
+		.form-container form a{
+			color: #5bc0de;
+		}
+		 .txtb input {
+			/* border-top: none;
+			border-left: none;
+			border-right: none; */
+			border: none;
+			outline: none;
+			width: 100%;
+			height: 40px;
+			margin-bottom: 15px;
+			padding-left: 30px;
+			border-radius: 10px;
+			background-color: rgba(255, 255, 255, .6);
+		}
+		.overlay-container{
+			width: 50%;
+			height: 100%;
+			position: absolute;
+			background-color: #fff;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			transition: all 1s;
+			border-radius: 10px;
+			
+		}
+		button {
+		    border-radius: 20px;
+		    border: 1px solid #fabd84;
+		    background: #fabd84;
+		    color: #fff;
+		    font-size: 12px;
+		    font-weight: bold;
+		    padding: 12px 45px;
+		    cursor: pointer;
+		}
+		#signIn{
+			background-color: #5bc0de;
+			border: none;
+		}
+		#login{
+			background-color: #5bc0de;	
+			border: none;
+		}
+		
+	</style>
+	<body>
+
+		<div class="box">
+			<!-- 注册 -->
+			<div class="form-container sign-up-container">
+			        <form>
+			            <h1>注册</h1>           
+			            <div class="txtb">
+			                <input type="text" placeholder="请输入用户名">
+			                <span data-placeholder="Useranme" ></span>
+			            </div>
+			            <div class="txtb">
+			                <input type="email" placeholder="请输入邮箱">
+			                <span data-placeholder="Email" ></span>
+			            </div> 
+			            <div class="txtb">
+			                <input type="password" placeholder="请输入密码">
+			                <span data-placeholder="Password" ></span>
+			            </div>
+			            <div class="txtb">
+			                <input type="password" placeholder="请再次输入密码">
+			                <span data-placeholder="Confirm Password" ></span>
+			            </div>            
+			            <button>注册</button>
+			        </form>
+			    </div>
+
+			<!-- 登录 -->
+			<div class="form-container sign-in-container">
+			        <form action="#">
+			            <h1>登录</h1>
+			            <div class="txtb">
+			                <input type="email" placeholder="请输入邮箱">
+			                <span data-placeholder="Email" ></span>
+			            </div>
+			            <div class="txtb">
+			                <input type="password" placeholder="请输入密码">
+			                <span data-placeholder="Password"></span>
+			            </div>
+			            <a href="#">忘记密码？</a>
+			            <button id="login">登录</button>
+			        </form>
+			    </div>
+
+			<!-- Overlay -->
+
+			<div class="overlay-container">
+			                <div class="overlay-panel overlay-left" style="display: none;">
+			                    <h1>已有账号？</h1>
+			                    <p>请使用您的账号进行登录</p>
+			                    <button class="ghost" id="signIn" >前往登录</button>
+			                </div>
+			                <div class="overlay-panel overlay-right">
+			                    <h1>没有账号?</h1>
+			                    <p>立即注册加入我们，和我们一起开始旅程吧</p>
+			                    <button class="ghost" id="signUp">注册</button>
+			                </div>
+			    </div>
+		</div>
+
+
+
+
+	</body>
+</html>
+<script src="./js/jquery-3.6.1.min.js"></script>
+<script>
+	$(function (){
+		$("#signUp").click(function(){
+			$(".overlay-container").css('transform','translateX(100%)');
+		$(".overlay-right").hide().siblings().slideDown(500);	
+		})
+		
+		$("#signIn").click(function(){
+			$(".overlay-container").css('transform','translateX(0%)');
+		$(".overlay-left").hide().siblings().slideDown();	
+		})
+	})
+</script>
